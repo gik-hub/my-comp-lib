@@ -12,11 +12,15 @@ import { GlobalStyle, defaultTheme, darkTheme } from "./utils";
 
 const App = () => {
   const [useDarkTheme, setUseDarkTheme] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
         <PrimaryButton onClick={() => setUseDarkTheme(!useDarkTheme)}>
           Toogle Theme
+        </PrimaryButton>{" "}
+        <PrimaryButton onClick={() => setShowModal(!showModal)}>
+          Show Modal
         </PrimaryButton>
         <div
           style={{
@@ -30,16 +34,16 @@ const App = () => {
             justifyContent: "space-around",
           }}
         >
-          <SignUpModal />
+          <SignUpModal showModal={showModal} setShowModal={setShowModal} />
         </div>
         <div>
-          normal => &nbsp;
+          normal ={">"} &nbsp;
           <PrimaryButton>Hello world</PrimaryButton> &nbsp;
           <SecondaryButton>Hello world</SecondaryButton> &nbsp;
           <TertiaryButton>Hello world</TertiaryButton> &nbsp;
         </div>
         <div>
-          small disabled => &nbsp;
+          small disabled =&gt; &nbsp;
           <PrimaryButton disabled modifiers={["small"]}>
             Hello world
           </PrimaryButton>{" "}
